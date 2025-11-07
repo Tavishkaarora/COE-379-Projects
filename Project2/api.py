@@ -37,6 +37,7 @@ def summary():
     A model summary endpoint GET /summary providing metadata about the model.
     """
     # Return JSON response summarizing metadata (see lecture example)
+    # TODO @Tav
     return "Hello world!\n", 418
 
 @app.route("/inference", methods=["POST"])
