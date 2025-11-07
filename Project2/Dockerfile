@@ -1,4 +1,4 @@
-FROM python:3.12
+FROM python:3.11
 
 # Copy files from VM to container
 COPY requirements.txt /requirements.txt
