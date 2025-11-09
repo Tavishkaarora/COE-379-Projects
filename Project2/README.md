@@ -24,7 +24,6 @@ Here is an example:
 ```
 ubuntu@tavishka-vm:~$ curl localhost:5000/summary
 {
-  "author": "Tav",
   "framework": "TensorFlow/Keras",
   "image_size": [
     64,
