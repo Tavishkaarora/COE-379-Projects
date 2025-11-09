@@ -64,11 +64,9 @@ To run the grader locally, first clone the repository, and navigate to `coe379l-
 ```./start_grader.sh```  
 
 If the model performs as expected, the output should look like the following:  
-TODO: update
 ```
 **** STARTING GRADING ****
-
-ERROR: GET /summary is INVALID. Non-200 status code; Status code received: 418
+GET /summary format correct; response: {'framework': 'TensorFlow/Keras', 'image_size': [64, 64], 'input_shape': [None, 64, 64, 3], 'model_name': 'best_model.keras', 'output_shape': [None, 1], 'parameters': 2030145}
 Starting full POST test suite...
 POST /inference format correct for input /data/damage/-93.66109_30.212114.jpeg AND prediction was correct!
 POST /inference format correct for input /data/damage/-93.79252_30.039519.jpeg AND prediction was correct!
