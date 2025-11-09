@@ -20,7 +20,30 @@ The user can make 2 types of requests to interact with our inference server.
 ### 1. `/summary` (GET)
 If the user would like a summary of the model's metadata, they can send a GET request to /summary:  
 ```curl localhost:5000/summary```
-TODO: provide example output
+Here is an example:  
+```
+ubuntu@tavishka-vm:~$ curl localhost:5000/summary
+{
+  "author": "Tav",
+  "framework": "TensorFlow/Keras",
+  "image_size": [
+    64,
+    64
+  ],
+  "input_shape": [
+    null,
+    64,
+    64,
+    3
+  ],
+  "model_name": "best_model.keras",
+  "output_shape": [
+    null,
+    1
+  ],
+  "parameters": 2030145
+}
+```
 
 ### 2. `/inference` (POST)
 If the user would like to post an image of a house, so the model can predict whether or not it is damaged, they can send a multipart POST request to /inference:  
