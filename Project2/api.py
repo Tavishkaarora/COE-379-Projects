@@ -42,8 +42,7 @@ def summary():
         "output_shape": model.output_shape,
         "parameters": model.count_params(),
         "image_size": IMG_SIZE,
-        "framework": "TensorFlow/Keras",
-        "author": "Tav"
+        "framework": "TensorFlow/Keras"
     }
 
     # Return metadata as JSON with 200 OK
