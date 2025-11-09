@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 import io
 
-# Global configuration and intialization.
+# Global configuration and initialization.
 app = Flask(__name__)
 MODEL_PATH = "best_model.keras"
 model = tf.keras.models.load_model(MODEL_PATH)
@@ -26,19 +26,29 @@ def preprocess_input(img_bytes: bytes) -> np.ndarray:
     # Convert image into NumPy array of the same shape (H, W, 3) and normalize.
     arr = np.array(img) / 255.0
     
-    # Add a batch dimension so model.predict can handle it (1, H, W, 3).
-    # i.e. a batch of one image.
+    # Add a batch dimension so model. predict can handle it (1, H, W, 3).
+    # i.e., a batch of one image.
     return arr.reshape(1, IMG_SIZE[0], IMG_SIZE[1], 3)
     
-
 @app.route("/summary", methods=["GET"])
 def summary():
     """
-    A model summary endpoint GET /summary providing metadata about the model.
+    A model summary endpoint (GET /summary) providing metadata about the model.
     """
-    # Return JSON response summarizing metadata (see lecture example)
-    # TODO @Tav
-    return "Hello world!\n", 418
+    # get model metadata
+    metadata = {
+        "model_name": MODEL_PATH,
+        "input_shape": model.input_shape,
+        "output_shape": model.output_shape,
+        "parameters": model.count_params(),
+        "image_size": IMG_SIZE,
+        "framework": "TensorFlow/Keras",
+        "author": "Tav"
+    }
+
+    # Return metadata as JSON with 200 OK
+    return jsonify(metadata), 200
+
 
 @app.route("/inference", methods=["POST"])
 def inference():
@@ -50,7 +60,7 @@ def inference():
     data = request.files["image"]
     img_bytes = data.read()
     
-    # Preprocess the input so it's an array of numeric value.
+    # Preprocess the input so it's an array of numeric values.
     input_arr = preprocess_input(img_bytes)
     
     # Return the model's prediction.
