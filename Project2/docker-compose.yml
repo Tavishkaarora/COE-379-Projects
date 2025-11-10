@@ -4,6 +4,6 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
-    image: hurricane-inference:1.0
+    image: lukevenk1/hurricane-inference:1.0
     ports:
       - 5000:5000
