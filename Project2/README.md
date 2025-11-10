@@ -3,6 +3,18 @@
 In this project, we develop various neural networks thata are trained on a dataset of satellite images from Texas after Hurricane Harvey, such that they can predict whether or not a building is damaged. We explore how we prepare the data, design and train the models, evaluate the models, and deploy our inference server, so users can interact with the model.  
 
 ## Deploying the Inference Server
+There are 2 ways the user can deploy the inference server.  
+
+### Pull Image from Docker Hub
+To quickly run the container using a prebuilt image pushed to Docker Hub, the user can run the following command:  
+```docker pull lukevenk1/hurricane-inference:1.0```   
+
+After the image has been pulled, to run the container, the user can run the following command:  
+```docker run -p 5000:5000 lukevenk1/hurricane-inference:1.0```
+
+### Build and Run Using the Source Code
+If the user would rather clone all the source code and rebuild the image locally, they can do so by cloning our repository and using Docker Compose.
+
 For simplification, we use a Makefile to automate the building and deployment of the Docker container that contains our best neural network model. If the user uses the Makefile, by default it will bring any existing container down and then restart it:  
 ```make```  
 
@@ -15,7 +27,7 @@ Finally, if the user wants to guarantee a completely fresh build, they can run t
 Doing any of the above 3 commands will start the container on the local machine and expose port 5000. This allows the user to interact with the inference server over the network using a REST API.
 
 ## Making Requests
-The user can make 2 types of requests to interact with our inference server.  
+Once the inference server is running, the user can make 2 types of requests to interact with our inference server.  
 
 ### 1. `/summary` (GET)
 If the user would like a summary of the model's metadata, they can send a GET request to /summary:  
