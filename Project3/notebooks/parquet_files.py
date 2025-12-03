@@ -1,0 +1,6 @@
+AGGREGATE_DATA = '../data/aggregate_data.parquet'
+COMPOSITE_DATA = '../data/composite_data.parquet'
+REDDIT_WSB_CACHE = '../data/reddit_wsb_cache.parquet'
+REDDIT_WSB_SENTIMENT = '../data/reddit_wsb_sentiment.parquet'
+STOCK_IGNOREDATES = '../data/stock_ignoredates.parquet'
+STOCK_PRICES = '../data/stock_prices.parquet'
